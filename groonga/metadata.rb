@@ -20,7 +20,15 @@ description      'Installs/Configures groonga'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.0.0'
 
-recipe "groonga", "Installs and configures groonga"
+recipe "groonga",                  "Installs and configures groonga"
+recipe "groonga::command",         "Installs and configures groonga command"
+recipe "groonga::development",     "Installs development files for use groonga as library"
+recipe "groonga::httpd",           "Installs and configures nginx based groonga HTTP server"
+recipe "groonga::library",         "Installs groonga library"
+recipe "groonga::munin-plugins",   "Installs and configures Munin plugins for groonga"
+recipe "groonga::server-gqtp",     "Installs and configures GQTP groonga server"
+recipe "groonga::server-http",     "Installs and configures small HTTP groonga server"
+recipe "groonga::tokenizer-mecab", "Installs MeCab based groonga tokenizer"
 
 supports "debian"
 supports "ubuntu"
