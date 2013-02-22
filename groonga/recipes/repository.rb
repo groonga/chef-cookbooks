@@ -17,7 +17,6 @@
 
 if platform_family?("debian")
   package "lsb-release" do
-    action [:install]
   end
 
   template "/etc/apt/sources.list.d/groonga.list" do
@@ -43,6 +42,5 @@ if platform_family?("debian")
 
   package "groonga-keyring" do
     options("--allow-unauthenticated")
-    action [:install]
   end
 end
