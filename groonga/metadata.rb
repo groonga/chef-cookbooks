@@ -22,7 +22,7 @@ version          '1.0.0'
 
 recipe "groonga", "Installs and configures groonga"
 
-supports "ubuntu"
+supports "debian"
 supports "ubuntu"
 supports "centos"
 supports "redhat"
