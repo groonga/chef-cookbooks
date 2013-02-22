@@ -43,4 +43,15 @@ if platform_family?("debian")
   package "groonga-keyring" do
     options("--allow-unauthenticated")
   end
+elsif platform_family?("rhel", "fedora")
+  if platform_family?("rhel")
+    family = "centos"
+  else
+    family = "fedora"
+  end
+  package "groonga-release" do
+    provider("rpm")
+    base_url = "http://packages.groonga.org/#{family}"
+    source("#{base_url}/groonga-release-1.1.0-1.noarch.rpm")
+  end
 end
