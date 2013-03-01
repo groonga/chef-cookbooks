@@ -21,9 +21,9 @@ if platform_family?("debian")
   package "lsb-release" do
   end
 
-  template "/etc/apt/sources.list.d/groonga.list" do
+  apt_repository "groonga" do
     extend Chef::Mixin::ShellOut
-    source "groonga.list.erb"
+
     platform = node.platform
     apt_policy = shell_out!("apt-cache", "policy").stdout
     if /(?:[an]=)(?:unstable|sid),/ =~ apt_policy
@@ -31,21 +31,19 @@ if platform_family?("debian")
     else
       code_name = shell_out!("lsb_release", "--short", "--codename").stdout.strip
     end
+
     case platform
     when "debian"
       component = "main"
     when "ubuntu"
       component = "universe"
     end
-    variables(:platform  => platform,
-              :code_name => code_name,
-              :component => component)
-    notifies :run, resources(:execute => "apt-get update"), :immediately
-  end
 
-  package "groonga-keyring" do
-    options("--allow-unauthenticated")
-    notifies :run, resources(:execute => "apt-get update"), :immediately
+    uri "http://packages.groonga.org/#{platform}/"
+    distribution code_name
+    components [component]
+    keyserver "keyserver.ubuntu.com"
+    key "45499429"
   end
 elsif platform_family?("rhel", "fedora")
   if platform_family?("rhel")
