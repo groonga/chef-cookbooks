@@ -40,3 +40,5 @@ supports "fedora"
 supports "freebsd"
 supports "windows"
 supports "mac_os_x"
+
+depends "apt"

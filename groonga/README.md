@@ -26,6 +26,10 @@ Requirements
 - `yum` - for RPM based package system
 - `homebrew` - for Mac OS X
 
+#### Cookbooks
+
+- [apt](https://github.com/opscode-cookbooks/apt)
+
 Attributes
 ----------
 

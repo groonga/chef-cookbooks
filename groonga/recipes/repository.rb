@@ -16,6 +16,8 @@
 # limitations under the License.
 
 if platform_family?("debian")
+  include_recipe "apt"
+
   package "lsb-release" do
   end
 
@@ -38,10 +40,12 @@ if platform_family?("debian")
     variables(:platform  => platform,
               :code_name => code_name,
               :component => component)
+    notifies :run, resources(:execute => "apt-get update"), :immediately
   end
 
   package "groonga-keyring" do
     options("--allow-unauthenticated")
+    notifies :run, resources(:execute => "apt-get update"), :immediately
   end
 elsif platform_family?("rhel", "fedora")
   if platform_family?("rhel")
