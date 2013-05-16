@@ -52,21 +52,23 @@ elsif platform_family?("rhel", "fedora")
     family = "fedora"
   end
 
-  remote_file "#{Chef::Config[:file_cache_path]}/groonga-release-1.1.0-1.noarch.rpm" do
+  rpm_base_name = "groonga-release-1.1.0-1.noarch.rpm"
+  cached_rpm_path = "#{Chef::Config[:file_cache_path]}/#{base_name}"
+  remote_file cached_rpm_path do
     base_url = "http://packages.groonga.org/#{family}"
-    source "#{base_url}/groonga-release-1.1.0-1.noarch.rpm"
+    source "#{base_url}/#{base_name}"
     not_if "rpm -qa | egrep -qx 'groonga-release-1.1.0-1(|.noarch)'"
     notifies :install, "rpm_package[groonga-release]", :immediately
   end
 
   rpm_package "groonga-release" do
-    source "#{Chef::Config[:file_cache_path]}/groonga-release-1.1.0-1.noarch.rpm"
-    only_if {::File.exists?("#{Chef::Config[:file_cache_path]}/groonga-release-1.1.0-1.noarch.rpm")}
+    source cached_rpm_path
+    only_if {::File.exists?(cached_rpm_path)}
     action :nothing
   end
 
   file "groonga-release-cleanup" do
-    path "#{Chef::Config[:file_cache_path]}/groonga-release-1.1.0-1.noarch.rpm"
+    path cached_rpm_path
     action :delete
   end
 end
