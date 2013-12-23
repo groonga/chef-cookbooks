@@ -53,10 +53,10 @@ elsif platform_family?("rhel", "fedora")
   end
 
   rpm_base_name = "groonga-release-1.1.0-1.noarch.rpm"
-  cached_rpm_path = "#{Chef::Config[:file_cache_path]}/#{base_name}"
+  cached_rpm_path = "#{Chef::Config[:file_cache_path]}/#{rpm_base_name}"
   remote_file cached_rpm_path do
     base_url = "http://packages.groonga.org/#{family}"
-    source "#{base_url}/#{base_name}"
+    source "#{base_url}/#{rpm_base_name}"
     not_if "rpm -qa | egrep -qx 'groonga-release-1.1.0-1(|.noarch)'"
     notifies :install, "rpm_package[groonga-release]", :immediately
   end
