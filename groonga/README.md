@@ -1,7 +1,7 @@
-groonga Cookbook
+Groonga Cookbook
 ================
 
-This cookbook installs and configures groonga. Groonga is an
+This cookbook installs and configures Groonga. Groonga is an
 open-source fulltext search engine and column store.
 
 Requirements
