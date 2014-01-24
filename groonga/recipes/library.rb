@@ -1,7 +1,7 @@
 # Cookbook Name:: groonga
-# Recipe:: default
+# Recipe:: library
 #
-# Copyright 2013 Kouhei Sutou <kou@clear-code.com>
+# Copyright 2014 Kouhei Sutou <kou@clear-code.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
