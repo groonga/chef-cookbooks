@@ -1,4 +1,4 @@
-# Copyright 2013 Kouhei Sutou <kou@clear-code.com>
+# Copyright 2013-2014 Kouhei Sutou <kou@clear-code.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,22 +13,22 @@
 # limitations under the License.
 
 name             'groonga'
-maintainer       'The groonga project'
+maintainer       'The Groonga project'
 maintainer_email 'groonga@razil.jp'
 license          'Apache 2.0'
-description      'Installs/Configures groonga'
+description      'Installs/Configures Groonga'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.0.0'
 
-recipe "groonga",                  "Installs and configures groonga"
-recipe "groonga::command",         "Installs and configures groonga command"
-recipe "groonga::development",     "Installs development files for use groonga as library"
-recipe "groonga::httpd",           "Installs and configures nginx based groonga HTTP server"
-recipe "groonga::library",         "Installs groonga library"
-recipe "groonga::munin-plugins",   "Installs and configures Munin plugins for groonga"
-recipe "groonga::server-gqtp",     "Installs and configures GQTP groonga server"
-recipe "groonga::server-http",     "Installs and configures small HTTP groonga server"
-recipe "groonga::tokenizer-mecab", "Installs MeCab based groonga tokenizer"
+recipe "groonga",                  "Installs and configures Groonga"
+recipe "groonga::command",         "Installs and configures Groonga command"
+recipe "groonga::development",     "Installs development files for use Groonga as library"
+recipe "groonga::httpd",           "Installs and configures nginx based Groonga HTTP server"
+recipe "groonga::library",         "Installs Groonga library"
+recipe "groonga::munin-plugins",   "Installs and configures Munin plugins for Groonga"
+recipe "groonga::server-gqtp",     "Installs and configures GQTP Groonga server"
+recipe "groonga::server-http",     "Installs and configures small HTTP Groonga server"
+recipe "groonga::tokenizer-mecab", "Installs MeCab based Groonga tokenizer"
 
 supports "debian"
 supports "ubuntu"
