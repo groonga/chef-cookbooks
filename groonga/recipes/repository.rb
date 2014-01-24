@@ -24,12 +24,26 @@ if platform_family?("debian")
   apt_repository "groonga" do
     extend Chef::Mixin::ShellOut
 
+    guess_code_name = lambda do
+      ::File.open("/etc/apt/sources.list") do |file|
+        file.each_line do |line|
+          case line
+          when /\Adeb http/
+            deb, url, code_name, *comopnents = line.split
+            code_name == "unstable" if code_name == "sid"
+            return code_name
+          end
+        end
+      end
+      nil
+    end
+
     platform = node.platform
     apt_policy = shell_out!("apt-cache", "policy").stdout
     if /(?:[an]=)(?:unstable|sid),/ =~ apt_policy
       code_name = "unstable"
     else
-      code_name = shell_out!("lsb_release", "--short", "--codename").stdout.strip
+      code_name = node.lsb["codename"] || guess_code_name.call
     end
 
     case platform
