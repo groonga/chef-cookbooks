@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'test-kitchen'
+gem 'minitest'
+gem 'minitest-chef-handler'
+gem 'kitchen-vagrant'
+gem 'berkshelf'
